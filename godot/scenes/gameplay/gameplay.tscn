@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://4fyoq8npekf0"]
+
+[ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://bx23rwwfjg7uc" path="res://scenes/gameplay/characters/Kelp.tscn" id="2_0w2j2"]
+[ext_resource type="Texture2D" uid="uid://ctdklnw55uumd" path="res://assets/sprites/kelp1.png" id="2_q64rj"]
+[ext_resource type="Texture2D" uid="uid://okcam7xvpnah" path="res://assets/sprites/kelp2.png" id="3_0w2j2"]
+[ext_resource type="Texture2D" uid="uid://cbbd3ieorfofc" path="res://assets/sprites/kelp3.png" id="4_gh441"]
+[ext_resource type="Script" uid="uid://b83omkj4aqsph" path="res://scenes/gameplay/gameplay.gd" id="5"]
+
+[sub_resource type="Gradient" id="Gradient_q64rj"]
+offsets = PackedFloat32Array(0, 0.59638554, 1)
+colors = PackedColorArray(0.0575, 0.16099998, 0.23, 1, 0.14509805, 0.40392157, 0.5803922, 1, 0.235, 0.65799993, 0.94, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0w2j2"]
+gradient = SubResource("Gradient_q64rj")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x0t60"]
+load_path = "res://.godot/imported/icon.png-9a25435582839ca3cd8bb514b597c2d9.ctex"
+
+[node name="Gameplay" type="Node" unique_id=257592149]
+script = ExtResource("5")
+kelp_scene = ExtResource("2_0w2j2")
+kelp_textures = Array[Texture2D]([ExtResource("2_q64rj"), ExtResource("3_0w2j2"), ExtResource("4_gh441")])
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1941953148]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0w2j2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1693548387]
+texture = SubResource("CompressedTexture2D_x0t60")
+
+[node name="PauseLayer" parent="." unique_id=1422606168 instance=ExtResource("2")]
+
+[node name="KelpContainer" type="Node2D" parent="." unique_id=1012783778]

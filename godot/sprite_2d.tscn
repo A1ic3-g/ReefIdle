@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dxny4tfa6a6c"]
 
-[ext_resource type="Texture2D" uid="uid://imkr5r3h5e7i" path="res://icon.svg" id="1_f7cmv"]
+[ext_resource type="Texture2D" uid="uid://cxifhxvovla8r" path="res://Assets/clown-fish.png" id="1_f7cmv"]
 
 [node name="Sprite2D" type="Player" unique_id=2091375957]
-position = Vector2(557, 289)
+position = Vector2(611.00006, 313)
+scale = Vector2(0.622, 0.5)
 texture = ExtResource("1_f7cmv")

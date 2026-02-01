@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bx23rwwfjg7uc"]
+
+[ext_resource type="Script" uid="uid://bnuov7fjfnbqm" path="res://scenes/gameplay/characters/kelp.gd" id="1_y8jwm"]
+
+[node name="Kelp" type="Node2D" unique_id=983947834]
+script = ExtResource("1_y8jwm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1057246145]
+centered = false
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1472888579]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1824616955]
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
