@@ -3,7 +3,7 @@ extends Node2D
 @onready var sprite = find_child("Sprite2D") 
 @onready var collision_poly = $Area2D/CollisionPolygon2D
 signal harvested(amount)
-var grow_speed = 500
+var grow_speed = 1000000000000
 var sway_speed = 1.5
 var sway_amplitude = 0.1 # Radians
 var target_y = 0.0
@@ -17,8 +17,9 @@ func _ready():
 	
 	# Start below the screen
 	# We assume 'target_y' will be passed by the spawner
-	global_position.y += 300
+	global_position.y += -500
 	print("Spawned Kelp")
+	print("Pos: " +str(global_position.x) + ", " + str(global_position.y))
 	print(global_position.y)
 	print(target_y)
 
@@ -62,9 +63,6 @@ func set_kelp_texture(tex: Texture2D):
 		# We set the polygon points
 		poly_node.set_deferred("polygon", polygons[0])
 		
-		# 3. ALIGNMENT: 
-		# If the sprite is NOT centered, poly_node.position = sprite_node.offset is correct.
-		# If the sprite IS centered, poly_node.position = Vector2.ZERO should be used.
 		if not sprite_node.centered:
 			poly_node.position = sprite_node.offset
 		else:

@@ -1,8 +1,16 @@
 [gd_scene format=3 uid="uid://fykgcceufn2x"]
 
-[ext_resource type="Texture2D" uid="uid://bo7tgq880m3mo" path="res://assets/sprites/standard-fish.png" id="1_pfetw"]
+[ext_resource type="Script" uid="uid://cmehshxpba2f2" path="res://scenes/gameplay/characters/fish.gd" id="1_pfetw"]
 
-[node name="Fish" type="Node2D" unique_id=1585738055]
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_spg2i"]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1926952545]
-texture = ExtResource("1_pfetw")
+[node name="Fish" type="Area2D" unique_id=482266887]
+scale = Vector2(0.3, 0.3)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_pfetw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1380250730]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=547650526]
+shape = SubResource("ConvexPolygonShape2D_spg2i")

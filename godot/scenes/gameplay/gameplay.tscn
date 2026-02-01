@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://okcam7xvpnah" path="res://assets/sprites/kelp2.png" id="3_0w2j2"]
 [ext_resource type="Texture2D" uid="uid://cbbd3ieorfofc" path="res://assets/sprites/kelp3.png" id="4_gh441"]
 [ext_resource type="Script" uid="uid://b83omkj4aqsph" path="res://scenes/gameplay/gameplay.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://bo7tgq880m3mo" path="res://assets/sprites/standard-fish.png" id="6_elju3"]
+[ext_resource type="PackedScene" uid="uid://fykgcceufn2x" path="res://scenes/gameplay/characters/Fish.tscn" id="6_lb4ud"]
+[ext_resource type="Script" uid="uid://dgalwbvij58kv" path="res://scenes/gameplay/grow_button.gd" id="7_gh441"]
+[ext_resource type="Texture2D" uid="uid://1uc7vyt8oamq" path="res://assets/sprites/clownfish.png" id="7_lb4ud"]
 
 [sub_resource type="Gradient" id="Gradient_q64rj"]
 offsets = PackedFloat32Array(0, 0.59638554, 1)
@@ -16,13 +20,12 @@ gradient = SubResource("Gradient_q64rj")
 fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x0t60"]
-load_path = "res://.godot/imported/icon.png-9a25435582839ca3cd8bb514b597c2d9.ctex"
-
 [node name="Gameplay" type="Node" unique_id=257592149]
 script = ExtResource("5")
 kelp_scene = ExtResource("2_0w2j2")
 kelp_textures = Array[Texture2D]([ExtResource("2_q64rj"), ExtResource("3_0w2j2"), ExtResource("4_gh441")])
+fish_scene = ExtResource("6_lb4ud")
+fish_textures = Array[Texture2D]([ExtResource("6_elju3"), ExtResource("7_lb4ud")])
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1941953148]
 anchors_preset = 15
@@ -32,9 +35,35 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_0w2j2")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1693548387]
-texture = SubResource("CompressedTexture2D_x0t60")
-
 [node name="PauseLayer" parent="." unique_id=1422606168 instance=ExtResource("2")]
 
 [node name="KelpContainer" type="Node2D" parent="." unique_id=1012783778]
+
+[node name="FishContainer" type="Node2D" parent="." unique_id=1696844914]
+
+[node name="Score" type="Label" parent="." unique_id=1934948354]
+offset_left = 973.0
+offset_top = 8.0
+offset_right = 1146.0
+offset_bottom = 39.0
+horizontal_alignment = 2
+
+[node name="GrowButton" type="Button" parent="." unique_id=14203072]
+anchors_preset = -1
+offset_left = 21.0
+offset_top = 99.0
+offset_right = 101.0
+offset_bottom = 163.0
+text = "Grow"
+script = ExtResource("7_gh441")
+
+[node name="SpawnButton" type="Button" parent="." unique_id=1593723394]
+anchors_preset = -1
+offset_left = 23.0
+offset_top = 186.0
+offset_right = 103.0
+offset_bottom = 250.0
+text = "Spawn"
+
+[connection signal="button_down" from="GrowButton" to="." method="_on_grow_button_button_down"]
+[connection signal="button_down" from="SpawnButton" to="." method="_on_spawn_button_button_down"]
